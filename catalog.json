@@ -1,0 +1,9 @@
+{
+  "format": "linkiir.catalog",
+  "format_version": 1,
+  "id": "lkai",
+  "name": "Linkiir AI Adapters",
+  "publisher": "Linkiir Inc",
+  "description": "Catalog of AI service adapters",
+  "min_grid_version": ""
+}
