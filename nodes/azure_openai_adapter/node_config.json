@@ -1,0 +1,114 @@
+{
+  "guid": "",
+  "workflow_guid": "",
+  "node_type": "transform",
+  "node_type_id": "LKAI_AZURE_OPENAI_ADAPTER",
+  "interval": false,
+  "node_name": "Azure OpenAI Adapter",
+  "description": "Sends inbound data to an Azure OpenAI model (chat completions or responses endpoint) and pushes the model output downstream.",
+  "config": [
+    {
+      "label": "Authentication Mode",
+      "value": "API Key",
+      "field_type": "list",
+      "description": "How to authenticate with the Azure OpenAI endpoint.",
+      "list_options": [
+        "API Key",
+        "Entra ID"
+      ]
+    },
+    {
+      "label": "Model URI",
+      "value": "",
+      "field_type": "string",
+      "description": "Full Azure OpenAI endpoint URL. Must contain /openai/deployments/{name}/chat/completions or /openai/responses. Found in the model deployment page in Azure Foundry."
+    },
+    {
+      "label": "API Key",
+      "value": "",
+      "field_type": "password",
+      "description": "Azure OpenAI API key. Found in the model deployment page in Azure Foundry.",
+      "depends_on": {
+        "field": "Authentication Mode",
+        "value": "API Key"
+      }
+    },
+    {
+      "label": "Azure Client ID",
+      "value": "",
+      "field_type": "string",
+      "description": "Entra ID application (client) ID for OAuth 2.0 client_credentials flow.",
+      "depends_on": {
+        "field": "Authentication Mode",
+        "value": "Entra ID"
+      }
+    },
+    {
+      "label": "Azure Tenant ID",
+      "value": "",
+      "field_type": "string",
+      "description": "Entra ID directory (tenant) ID.",
+      "depends_on": {
+        "field": "Authentication Mode",
+        "value": "Entra ID"
+      }
+    },
+    {
+      "label": "Azure Client Secret",
+      "value": "",
+      "field_type": "password",
+      "description": "Entra ID client secret. Created in the Azure portal under App registrations > Certificates & secrets.",
+      "depends_on": {
+        "field": "Authentication Mode",
+        "value": "Entra ID"
+      }
+    },
+    {
+      "label": "System Prompt",
+      "value": "You are a healthcare interoperability assistant. Based solely on the structure and coded elements of the following FHIR or HL7 v2 message, infer non-identifying attributes such as whether the context is adult or pediatric, acute or routine, lab/imaging/clinical observation, screening or diagnostic, and real-time or historical data flow. Do not restate any field values or patient-identifying information, and respond in no more than three sentences.",
+      "field_type": "string",
+      "description": "Global instructions for the model. Set rules, tone, output format, and safety constraints."
+    },
+    {
+      "label": "Model Name",
+      "value": "",
+      "field_type": "string",
+      "description": "Model deployment identifier such as 'gpt-4o-mini'. Required for the responses endpoint mode."
+    },
+    {
+      "label": "Max Tokens",
+      "value": 4096,
+      "field_type": "number",
+      "description": "Upper limit on the length of generated results. Increase if output is truncated."
+    },
+    {
+      "label": "Temperature",
+      "value": "",
+      "field_type": "number",
+      "description": "Controls randomness (0.0-1.0). Lower values produce more deterministic output. Leave empty to use the model default."
+    },
+    {
+      "label": "TopP",
+      "value": "",
+      "field_type": "number",
+      "description": "Controls diversity via nucleus sampling (0.0-1.0). 0.5 means half of all likelihood-weighted options are considered. Leave empty to use the model default."
+    },
+    {
+      "label": "Request Timeout",
+      "value": 30,
+      "field_type": "number",
+      "description": "HTTP timeout in seconds. Increase for large prompts or high max_tokens."
+    },
+    {
+      "label": "Live Mode",
+      "value": true,
+      "field_type": "bool",
+      "description": "When off, requests are simulated and no data leaves the runtime."
+    }
+  ],
+  "library_deps": {
+    "azure_openai": "1.0.0"
+  },
+  "config_version": 1,
+  "version": "1.0.0"
+}
