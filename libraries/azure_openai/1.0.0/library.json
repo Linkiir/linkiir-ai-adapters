@@ -1,0 +1,5 @@
+{
+  "name": "azure_openai",
+  "description": "Azure OpenAI client. Handles API-key and Azure AD client-credentials authentication and provides chat completions, responses and text extraction helpers. Copy the azure_openai/ folder into a node and add it to package.path.",
+  "version": "1.0.0"
+}
