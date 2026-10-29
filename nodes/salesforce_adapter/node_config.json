@@ -1,0 +1,127 @@
+{
+  "guid": "",
+  "workflow_guid": "",
+  "node_type": "transform",
+  "node_type_id": "TRANSFORM_CUSTOM",
+  "catalog_type_id": "LKAI_SALESFORCE_ADAPTER",
+  "interval": false,
+  "node_name": "Salesforce Adapter",
+  "description": "Queries and updates Salesforce records via the REST API. Receives inbound data specifying what to query or modify, executes the operation, and pushes results downstream.",
+  "config": [
+    {
+      "label": "Domain",
+      "value": "",
+      "field_type": "string",
+      "description": "Salesforce instance domain, e.g. myorg.my.salesforce.com. Do not include the https:// prefix."
+    },
+    {
+      "label": "Client ID",
+      "value": "",
+      "field_type": "string",
+      "description": "OAuth 2.0 client_id from the connected app configuration in Salesforce Setup."
+    },
+    {
+      "label": "Client Secret",
+      "value": "",
+      "field_type": "password",
+      "description": "OAuth 2.0 client_secret from the connected app configuration."
+    },
+    {
+      "label": "Key",
+      "value": "",
+      "field_type": "password",
+      "description": "Pre-existing bearer token. If set, the adapter uses this token directly instead of authenticating via client_credentials. Leave empty for normal OAuth flow."
+    },
+    {
+      "label": "API Version",
+      "value": "59.0",
+      "field_type": "string",
+      "description": "Salesforce REST API version number, e.g. 59.0. Used to build the /services/data/v<version>/ path."
+    },
+    {
+      "label": "Live Mode",
+      "value": true,
+      "field_type": "bool",
+      "description": "When off, API requests are simulated and no data leaves the runtime. Authentication is always performed live so credential problems surface immediately."
+    },
+    {
+      "label": "Verify TLS",
+      "value": true,
+      "field_type": "bool",
+      "description": "Whether to verify the Salesforce server's TLS certificate. Leave on outside of local testing."
+    }
+  ],
+  "library_deps": {
+    "salesforce": "1.0.0"
+  },
+  "config_version": 1,
+  "version": "1.0.0",
+  "template_origin": {
+    "catalog": "linkiir-business-adapters",
+    "template_id": "group:linkiir-business-adapters/salesforce_adapter",
+    "commit": "b1012db8a20c6ed9db5cfedc52aee2f123db6d5f",
+    "version": "1.0.0",
+    "linked": false,
+    "files": [
+      "main.lua",
+      "salesforce/salesforce.lua",
+      "salesforce/salesforce_auth.lua",
+      "salesforce/salesforce_http.lua",
+      "salesforce/salesforce_token.lua",
+      "samples/query_and_update.json",
+      "samples/query_only.json"
+    ],
+    "field_defs": [
+      {
+        "label": "Domain",
+        "field_type": "string",
+        "description": "Salesforce instance domain, e.g. myorg.my.salesforce.com. Do not include the https:// prefix.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "Client ID",
+        "field_type": "string",
+        "description": "OAuth 2.0 client_id from the connected app configuration in Salesforce Setup.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "Client Secret",
+        "field_type": "password",
+        "description": "OAuth 2.0 client_secret from the connected app configuration.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "Key",
+        "field_type": "password",
+        "description": "Pre-existing bearer token. If set, the adapter uses this token directly instead of authenticating via client_credentials. Leave empty for normal OAuth flow.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "API Version",
+        "field_type": "string",
+        "description": "Salesforce REST API version number, e.g. 59.0. Used to build the /services/data/v<version>/ path.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "Live Mode",
+        "field_type": "bool",
+        "description": "When off, API requests are simulated and no data leaves the runtime. Authentication is always performed live so credential problems surface immediately.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "Verify TLS",
+        "field_type": "bool",
+        "description": "Whether to verify the Salesforce server's TLS certificate. Leave on outside of local testing.",
+        "list_options": null,
+        "depends_on": null
+      }
+    ]
+  },
+  "min_grid_version": "1.2.0"
+}

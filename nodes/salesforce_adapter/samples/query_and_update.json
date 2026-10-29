@@ -1,0 +1,9 @@
+{
+  "object": "Account",
+  "where": "Name = 'Acme Corporation'",
+  "fields": "Id,Name,Industry,BillingCity",
+  "update": {
+    "Industry": "Technology",
+    "BillingCity": "San Francisco"
+  }
+}
