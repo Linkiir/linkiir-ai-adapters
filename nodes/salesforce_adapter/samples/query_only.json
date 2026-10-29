@@ -1,6 +1,0 @@
-{
-  "object": "Contact",
-  "where": "Account.Name = 'Acme Corporation'",
-  "fields": "Id,FirstName,LastName,Email",
-  "limit": 50
-}
