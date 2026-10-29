@@ -111,5 +111,129 @@
     "azure_openai": "1.0.0"
   },
   "config_version": 1,
-  "version": "1.0.0"
+  "version": "1.0.1",
+  "template_origin": {
+    "catalog": "linkiir-ai-adapters",
+    "template_id": "group:linkiir-ai-adapters/azure_openai_adapter",
+    "commit": "e52883d7b471c2c1a859ed3f6986d765b31826e6",
+    "version": "1.0.0",
+    "linked": false,
+    "files": [
+      "azure_openai/azure_openai.lua",
+      "azure_openai/azure_openai_auth.lua",
+      "azure_openai/azure_openai_http.lua",
+      "azure_openai/azure_openai_token.lua",
+      "main.lua",
+      "samples/fhir_patient.json"
+    ],
+    "field_defs": [
+      {
+        "label": "Authentication Mode",
+        "field_type": "list",
+        "description": "How to authenticate with the Azure OpenAI endpoint.",
+        "list_options": [
+          "API Key",
+          "Entra ID"
+        ],
+        "depends_on": null
+      },
+      {
+        "label": "Model URI",
+        "field_type": "string",
+        "description": "Full Azure OpenAI endpoint URL. Must contain /openai/deployments/{name}/chat/completions or /openai/responses. Found in the model deployment page in Azure Foundry.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "API Key",
+        "field_type": "password",
+        "description": "Azure OpenAI API key. Found in the model deployment page in Azure Foundry.",
+        "list_options": null,
+        "depends_on": {
+          "field": "Authentication Mode",
+          "value": "API Key"
+        }
+      },
+      {
+        "label": "Azure Client ID",
+        "field_type": "string",
+        "description": "Entra ID application (client) ID for OAuth 2.0 client_credentials flow.",
+        "list_options": null,
+        "depends_on": {
+          "field": "Authentication Mode",
+          "value": "Entra ID"
+        }
+      },
+      {
+        "label": "Azure Tenant ID",
+        "field_type": "string",
+        "description": "Entra ID directory (tenant) ID.",
+        "list_options": null,
+        "depends_on": {
+          "field": "Authentication Mode",
+          "value": "Entra ID"
+        }
+      },
+      {
+        "label": "Azure Client Secret",
+        "field_type": "password",
+        "description": "Entra ID client secret. Created in the Azure portal under App registrations > Certificates & secrets.",
+        "list_options": null,
+        "depends_on": {
+          "field": "Authentication Mode",
+          "value": "Entra ID"
+        }
+      },
+      {
+        "label": "System Prompt",
+        "field_type": "string",
+        "description": "Global instructions for the model. Set rules, tone, output format, and safety constraints.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "Model Name",
+        "field_type": "string",
+        "description": "Model deployment identifier such as 'gpt-4o-mini'. Required for the responses endpoint mode.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "Max Tokens",
+        "field_type": "number",
+        "description": "Upper limit on the length of generated results. Increase if output is truncated.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "Temperature",
+        "field_type": "number",
+        "description": "Controls randomness (0.0-1.0). Lower values produce more deterministic output. Leave empty to use the model default.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "TopP",
+        "field_type": "number",
+        "description": "Controls diversity via nucleus sampling (0.0-1.0). 0.5 means half of all likelihood-weighted options are considered. Leave empty to use the model default.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "Request Timeout",
+        "field_type": "number",
+        "description": "HTTP timeout in seconds. Increase for large prompts or high max_tokens.",
+        "list_options": null,
+        "depends_on": null
+      },
+      {
+        "label": "Live Mode",
+        "field_type": "bool",
+        "description": "When off, requests are simulated and no data leaves the runtime.",
+        "list_options": null,
+        "depends_on": null
+      }
+    ]
+  },
+  "min_grid_version": "1.2.0"
 }
